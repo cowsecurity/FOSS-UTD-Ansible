@@ -1,0 +1,24 @@
+- name: Ensure project directory exists
+  file:
+    path: "{{ shlink.data_path }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Template Shlink .env file
+  template:
+    src: shlink.env.j2
+    dest: "{{ shlink.data_path }}/.env"
+    mode: 0644
+
+- name: Template docker-compose.yml
+  template:
+    src: docker-compose.yml.j2
+    dest: "{{ shlink.data_path }}/docker-compose.yml"
+    mode: 0644
+
+- name: Deploy Shlink
+  community.docker.docker_compose_v2:
+    project_src: "{{ shlink.data_path }}"
+    state: present

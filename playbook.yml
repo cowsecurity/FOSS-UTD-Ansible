@@ -1,0 +1,8 @@
+- name: Provision VM and deploy Shlink
+  hosts: web
+  become: yes
+
+  roles:
+    - common
+    - docker
+    - shlink

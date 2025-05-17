@@ -1,0 +1,12 @@
+services:
+  shlink:
+    image: {{ shlink.image }}
+    ports:
+      - "{{ shlink.port }}:8080"
+    env_file:
+      - {{ shlink.data_path }}/.env
+    volumes:
+      - shlink_data:/etc/shlink/data
+
+volumes:
+  shlink_data:

@@ -1,0 +1,8 @@
+shlink:
+  image: shlinkio/shlink:stable
+  port: 8080
+  data_path: /opt/shlink
+  env:
+    SHORT_DOMAIN_HOST: "http://192.168.32.131"
+    DB_DRIVER: "sqlite"
+    DEFAULT_DOMAIN: "192.168.32.131"
